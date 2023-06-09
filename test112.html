@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+
+        <script>
+
+            window.onload = function(){
+            
+            var a = document.getElementById( 'hel' );
+            
+            a.style.background = "blue"
+            a.value="치즈"
+
+            var a2 = document.getElementById( 'hel2' );
+            opener.parent.settest();
+            var a3 = opener.parent.setdata()
+            a2.value=a3[0];
+            
+            }
+
+
+            function openwin(){
+                var changetest = document.getElementById( 'yello' );
+            
+                var newImgVideo =document.createElement('button')
+                var text = document.createTextNode("오랜지")
+                newImgVideo.appendChild(text)
+                changetest.appendChild(newImgVideo)
+            }
+            var videoCheck = document.getElementById('v2');
+
+            function openwin1(){
+                alert(JSON.stringify(videoCheck.id))
+                var thisTitle1 = document.getElementById("hel2");
+                thisTitle1.style.background="blue"
+                var xet = "v2"
+                var thisTitle = document.getElementById(String(videoCheck.id)+"title");
+                thisTitle.style.background="red"
+            }
+        </script>
+
+    </head>
+    <body>
+        <div id="yello">
+            <input type="button" value="사과" id="hel" class="hel" onclick="openwin()">
+            <input type="button" value="실험" id="hel2" class="hel" onclick="openwin1()">
+            <input type="button" value="버터" id="hel23" onclick="opener.parent.settest()">
+            <input type="button" value="1" id="videoCheck">
+            <input type="button" value="2" id="title">
+            <input type="button" value="3" id="videoChecktitle">
+            <input type="button" value="4" id="v2title">
+            <input type="button" value="5" id="v2">
+
+        </div>
+    </body>
+</html>

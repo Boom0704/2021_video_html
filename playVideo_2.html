@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head>
+        <link rel="stylesheet" type="text/css" href="playVideoCss.css"/>
+        <meta charset="utf-8">
+        <title></title>
+        <script>
+            var videoList = new Array();
+            var channelList = new Array();
+            var videoListCount = 0;
+            //윈도 오픈시 셋팅
+            window.onload = function(){
+                var startblock = document.getElementById('videoForm');
+                startblock.style.display='none';
+                //초기 데이터 설정
+                {
+                var flogVideo = new Array();
+                flogVideo.push("조용히 보는 개구리 울음 소리 비디오");
+                flogVideo.push("전영범");
+                flogVideo.push("1000 Views");
+                flogVideo.push("1 Month ago");
+                flogVideo.push("#개구리#귀여운#영상#동물");
+                flogVideo.push("개구리를 리뷰하기 위한 비디오입니다. 위 개구리는 귀엽습니다.");
+                flogVideo.push("video/flog.mp4");
+                flogVideo.push("img/flog.png");
+                videoListCount++;
+
+                var bird1Video = new Array();
+                bird1Video.push("귀여운 붉은 꼬리 모자 앵무의 움직임 영상");
+                bird1Video.push("전영범");
+                bird1Video.push("1000 Views");
+                bird1Video.push("1 Month ago");
+                bird1Video.push("#붉은꼬리모자앵무#귀여운#동물");
+                bird1Video.push("앵무새를 리뷰하기 위한 비디오입니다. 위 앵무새는 귀엽습니다.");
+                bird1Video.push("video/bird1.mp4");
+                bird1Video.push("img/bird1.png");
+                videoListCount++;74
+
+                var bird2Video = new Array();
+                bird2Video.push("일본에서 직접 찍은 수많은 새들의 영상 (아오모리공원)");
+                bird2Video.push("전영범");
+                bird2Video.push("1000 Views");
+                bird2Video.push("1 Month ago");
+                bird2Video.push("#아오모리#일본여행#새들#동물#귀여운");
+                bird2Video.push("2019년 1월에 직접 훗쿠오카- 뱃푸를 여행하다가 아오모리 공원에서 찍은 영상입니다. 실제로는 훨씬 아름다웠습니다.");
+                bird2Video.push("video/bird2.mp4");
+                bird2Video.push("img/bird2.png");
+                videoListCount++;
+
+                videoList.push(flogVideo);
+                videoList.push(bird1Video);
+                videoList.push(bird2Video);
+
+            }
+            
+                var arr1 = JSON.parse(localStorage.getItem("localVideoList"));
+                for(var i=3; i<arr1.length; i++){
+                    addVideo(arr1[i][0],arr1[i][1],arr1[i][2],arr1[i][3],arr1[i][4],arr1[i][5],arr1[i][6],arr1[i][7]);
+                }
+
+                var arr2 = JSON.parse(localStorage.getItem("localChannelList"));
+                for(var i=0; i<arr2.length; i++){
+                    addChannel(arr2[i][0],arr2[i][1]);
+                }
+            }
+
+            //영상 추가할때 버튼
+            function newwin(){
+                window.open("newvideo_2.html","","width=600px,height=400px,top=200px;");
+            }
+
+            function addNewPerson() {
+                window.open("addnewperson_2.html","","width=600px,height=400px,top=200px;");
+            }
+
+            //video와 channel 바꾸기 버튼 (임시버튼임)
+            function changen(){
+            // var chenk1 = document.getElementById("channemlForm");
+            // var chenk2 = document.getElementById("videoForm");
+            // if(chenk1.style.display=='none'){
+            //         chenk1.style.display = 'block';
+            //         chenk2.style.display = 'none';
+                    
+            //     }else{
+                    
+            //         chenk1.style.display = 'none';
+            //         chenk2.style.display = 'block';
+            //     }
+            localStorage.clear();
+            }
+
+
+            
+
+
+            //비디오 작동버튼  settitle, setname, setview, settime, settag, setvideoInfo, setlocation, setthumbnail
+            function newwVideo(getNumber){
+                var chenk1 = document.getElementById("channemlForm");
+                var chenk2 = document.getElementById("videoForm");
+                chenk1.style.display = 'none';
+                chenk2.style.display = 'block';
+                var spaceToView = "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
+
+                var afterStr  = videoList[getNumber][4].split('#');
+                var newHashtags = document.getElementById("newHashtags");
+                while (newHashtags.hasChildNodes()) {	// 부모노드가 자식이 있는지 여부를 알아낸다
+                    newHashtags.removeChild(newHashtags.firstChild)
+                    }
+                for(var i=1; i<afterStr.length; i++){
+                    var tags =document.createElement('li')
+                    tags.setAttribute("class", "tag");
+                    var tagText = document.createTextNode("#"+afterStr[i]);
+                    tags.appendChild(tagText); 
+                    newHashtags.appendChild(tags); 
+                }
+                
+                var videoPicture = document.getElementById("videoPicture").src = "img/"+String(videoList[getNumber][1])+".jpg";
+                var Vplayer = document.getElementById("Vplayer").src = String(videoList[getNumber][6]);
+                var mianTitle = document.getElementById("mianTitle").innerHTML = String(videoList[getNumber][0]) + spaceToView;
+                var mianViewsAndTimes = document.getElementById("mianViewsAndTimes").innerHTML = String(videoList[getNumber][2]) + "  " + String(videoList[getNumber][3]);
+                var mianName = document.getElementById("mianName").innerHTML = String(videoList[getNumber][1]);
+                var countSubscribers = document.getElementById("countSubscribers").innerHTML = "1000";
+                var mainInfomationAbout = document.getElementById("mainInfomationAbout").innerHTML = String(videoList[getNumber][5]);
+
+            }
+            
+
+            function addChannel(setname, setlocation){
+                var settingNewChannel = new Array();
+                settingNewChannel.push(setname)
+                settingNewChannel.push(setlocation)
+                
+                var target = document.getElementById('subscribers');
+                var newItem =document.createElement('li')
+                newItem.setAttribute("class", "name");
+                newItem.onclick = function(){ searchSub(setname); }
+
+                var newBtn =document.createElement('button');
+                var newImg =document.createElement('img');
+                newImg.setAttribute("src", setlocation);
+                var newSpan =document.createElement('span');
+                var text = document.createTextNode(setname);
+                newSpan.appendChild(text);
+
+                
+                newBtn.appendChild(newImg);
+                newBtn.appendChild(newSpan);
+                newItem.appendChild(newBtn);
+                target.appendChild(newItem);
+
+                channelList.push(settingNewChannel);
+                localStorage.setItem("localChannelList", JSON.stringify(channelList));
+            }
+
+
+            //동영상 추가 버튼
+            function addVideo(settitle, setname, setview, settime, settag, setvideoInfo, setlocation, setthumbnail){
+                var settingNewVideo = new Array();
+                settingNewVideo.push(settitle)
+                settingNewVideo.push(setname)
+                settingNewVideo.push(setview)
+                settingNewVideo.push(settime)
+                settingNewVideo.push(settag)
+                settingNewVideo.push(setvideoInfo)
+                settingNewVideo.push(setlocation)
+                settingNewVideo.push(setthumbnail)
+                videoList.push(settingNewVideo)
+                var target = document.getElementById('videoObject');
+                var newItem =document.createElement('li')
+                newItem.setAttribute("class", "item");
+                var onclickValue = videoListCount;
+                newItem.setAttribute("id", "v"+ String(onclickValue));
+                newItem.onclick = function(){ newwVideo(onclickValue); }
+                videoListCount++;
+                var newDivImg =document.createElement('div')
+                newDivImg.setAttribute("class", "img");
+                var newImgVideo =document.createElement('img')
+                newImgVideo.setAttribute("src", setthumbnail);
+                newDivImg.appendChild(newImgVideo);
+                newItem.appendChild(newDivImg);
+                var newDivMetadata =document.createElement('div')
+                newDivMetadata.setAttribute("class", "metadata");
+                var newImgChannel =document.createElement('img');
+                newImgChannel.setAttribute("src", "img/"+ setname +".jpg");
+                var newDivInfo =document.createElement('div');
+                newDivInfo.setAttribute("class", "info");
+                //타이틀
+                var newSpanTitle =document.createElement('span');
+                newSpanTitle.setAttribute("class", "title");
+                var textTitle = document.createTextNode(settitle+"ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ");
+                newSpanTitle.appendChild(textTitle);
+                //영상 이름
+                var newSpanName =document.createElement('span');
+                newSpanName.setAttribute("class", "name");
+                var textName = document.createTextNode(setname);
+                newSpanName.appendChild(textName);
+                var newDivViewAndTimes =document.createElement('div');
+                newDivViewAndTimes.setAttribute("class", "ViewsAndTimes");
+                var newSpanViews =document.createElement('span');
+                newSpanViews.setAttribute("class", "views");
+                var textViews = document.createTextNode(setview);
+                newSpanViews.appendChild(textViews);
+                var newSpanTimes =document.createElement('span');
+                newSpanTimes.setAttribute("class", "times");
+                var textTimes = document.createTextNode(settime);
+                newSpanTimes.appendChild(textTimes);
+                newDivViewAndTimes.appendChild(newSpanViews);
+                newDivViewAndTimes.appendChild(newSpanTimes);
+                newDivInfo.appendChild(newSpanTitle);
+                newDivInfo.appendChild(newSpanName);
+                newDivInfo.appendChild(newDivViewAndTimes);
+                newDivMetadata.appendChild(newImgChannel);
+                newDivMetadata.appendChild(newDivInfo);
+                newItem.appendChild(newDivMetadata);
+                target.appendChild(newItem);
+
+
+
+                //해쉬태그 추가
+                {
+                    var oldHashtags = document.getElementById('oldHashtags');                    
+                    var afterStr  = settag.split('#');
+                    for(var i=1; i<afterStr.length; i++){
+                        var tags =document.createElement('li')
+                        tags.setAttribute("class", "tag");
+                        var tagText = document.createTextNode("#"+afterStr[i]);
+                        tags.appendChild(tagText); 
+                        oldHashtags.appendChild(tags);
+                    }
+
+                }
+                localStorage.setItem("localVideoList", JSON.stringify(videoList)); 
+            }
+
+            function goHome(){
+                window.open("playVideo_2.html","_self");
+            }
+
+            function searchHashtags(){
+                var chenk1 = document.getElementById("channemlForm");
+                var chenk2 = document.getElementById("videoForm");
+                chenk1.style.display = 'block';
+                chenk2.style.display = 'none';
+                chenk1.style.background=#c0a631;
+                var searchTags = document.getElementById("searchBar").value.split('#');
+
+                for(var j=0; j<videoList.length; j++){
+                        document.getElementById("v"+j).style.display = 'none';
+                        var oldTags = videoList[j][4].split('#');
+                        
+
+
+                        for(var i=1; i<searchTags.length; i++){
+                                for(var w=0; w<oldTags.length; w++){
+                                        if(searchTags[i]==oldTags[w])
+                                            document.getElementById("v"+j).style.display = 'block';
+                        }
+                    }
+
+                }
+            }
+            function searchSub(subName) {
+                for(var j=0; j<videoList.length; j++){
+                    document.getElementById("v"+j).style.display = 'none';
+                    if(videoList[j][1]==subName)
+                        document.getElementById("v"+j).style.display = 'block';
+                }
+            }
+
+        </script>
+    </head>
+
+
+<body>
+    <!-- 해더 -->
+    <header>
+        <div class="logo" onclick="goHome()">
+            <img src="img/youtube.png" width="50" height="40" alt=""/>
+            <span class="title">VideoㅤHome</span>
+        </div>
+        <div class="search">
+            <input  type="text" class="searchBar" id="searchBar" placeholder=" #해쉬태그로 검색하세요">
+            <input type="button" class="searchBtn" id="searchBtn" value="검색" onclick="searchHashtags()">
+        </div>
+        <div class="icons">
+            <button class="searchicon" onclick="newwin();"><img src="img/plus.png" width="50" height="40" alt=""/></button>
+            <button class="searchicon" onclick="addNewPerson();"><img src="img/addperson.png" width="50" height="40" alt=""/></button>
+            <input type="button" class="addicon" onclick="changen()" value="리셋">
+           
+        </div>
+    </header>
+    <!-- 해더 -->
+
+    <!-- channemlForm -->
+    <div id="channemlForm">
+
+        <!-- 사이드바 -->
+        <aside class="leftside">
+            <div>
+                <ul class="upside">
+                    <li class="home"><button onclick="goHome()"><img src="img/home.png"> <span>HOME</span> </button></li>
+                    <li class="subscribe"><button> <img src="img/compass.png"> <span>SEARCH</span> </button></li>
+                </ul>
+            </div>
+            
+            <div>
+                <ul class="subscribers" id="subscribers">
+                    <span class="title">subscribe</span>
+                    <li class="name" onclick="searchSub('전영범')">
+                        <button>
+                            <img src="img/전영범.jpg" alt=""/>
+                            <span>전영범</span>
+                        </button>
+                    </li>
+                    <li class="name" onclick="searchSub('고양이')">
+                        <button>
+                            <img src="img/고양이.jpg" alt=""/>
+                            <span>고양이</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- 사이드바 -->
+        
+        
+        <section class="genre">
+            <ul class="hashtags" id="oldHashtags">
+                <li class="tag">#개구리</li>
+                <li class="tag">#귀여운</li>
+                <li class="tag">#영상</li>
+                <li class="tag">#붉은꼬리모자앵무</li>
+                <li class="tag">#동물</li>
+                <li class="tag">#아오모리</li>
+                <li class="tag">#일본여행</li>
+                <li class="tag">#새들</li>
+                
+            </ul>
+        </section>
+                
+        <section class="video">
+            <ul id="videoObject">
+                <li class="item" onclick="newwVideo(0)" id="v0">
+                    <div class="img"><img src="img/flog.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title" id="v1title">조용히 보는 개구리 울음 소리 비디오ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                            <span class="name" id="v1name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views" id="v1views">300 Views</span>
+                                <span class="times" id="v1times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo(1)" id="v1">
+                    <div class="img"><img src="img/birl1.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title" id="v1title">귀여운 붉은 꼬리 모자 앵무의 움직임 영상ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo(2)" id="v2">
+                    <div class="img"><img src="img/birl2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title" id="v1title">일본에서 직접 찍은 수많은 새들의 영상 (아오모리공원)ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <!-- channemlForm -->
+
+    <!-- videoForm -->
+    <div id="videoForm">
+        <section class="player">
+            <video controls src="video/video1.mp4" id="Vplayer"></video>
+        </section>
+
+
+
+        <div class="infoAndUpNext">
+            <section class="info">
+
+                <div class="metadata">
+                    <ul class="hashtags" id="newHashtags">
+                    </ul>
+                    <div class="titleAndButton">
+                        <span class="title" id="mianTitle"> 제목을 로드하는데 실패하였습니다.ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </div>
+                    <span class="views" id="mianViewsAndTimes">조회수를 로드하는데 실패하였습니다. </span>
+                </div>
+        
+                
+                <ul class="actions">
+                    <li><button><i class="fas fa-thumbs-up"><span>1000</span></i></button></li>
+                    <li><button><i class="fas fa-thumbs-down">1000<span></span></i></button></li>
+                    <li><button><i class="fas fa-share"><span>Share</span></i></button></li>
+                    <li><button><i class="fas fa-plus"><span>Save</span></i></button></li>
+                    <li><button><i class="fab fa-font-awesome-flag">Report<span></span></i></button></li>
+                </ul>
+        
+        
+                <div class="channel">
+                    <div class="noneinfo">
+                        <div class="metadata">
+                            <img id="videoPicture" src="img/selfcamera.jpg" alt=""/>
+                            <div class="info">
+                                <span class="name" id="mianName">이름 로드하는데 실패하였습니다.</span>
+                                <span class="subscribers" id="countSubscribers">구독좌 수를 로드하는데 실패하였습니다.</span>
+                            </div>
+                        </div>
+                        <div class="subscribe">subscribe</div>
+                    </div>
+                    <div class="channelinfo">
+                        <div class="test" id="mainInfomationAbout">채널 설명을 로드하는데 실패하였습니다.</div>
+                    </div>
+                </div>
+        
+            </section>
+        
+        
+            <section class="upNext">
+                <span class="title">Up next</span>
+                <ul>
+                    <li class="item"  onclick="newwVideo(0)">
+                        <div class="img"><img src="img/flog.png" alt=""></div>
+                        <div class="info">
+                            <span class="title">조용히 보는 개구리 울음 소리 비디오ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                            <span class="name">전영범</span>
+                            <span class="views">채널정보</span>
+                        </div>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </li>
+                    <li class="item" onclick="newwVideo(1)">
+                        <div class="img"><img src="img/birl1.png" alt=""></div>
+                        <div class="info">
+                            <span class="title">귀여운 붉은 꼬리 모자 앵무의 움직임 영상ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                            <span class="name">전영범</span>
+                            <span class="views">채널정보</span>
+                        </div>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </li>
+                    <li class="item" onclick="newwVideo(2)">
+                        <div class="img"><img src="img/birl2.png" alt=""></div>
+                        <div class="info">
+                            <span class="title">일본에서 직접 찍은 수많은 새들의 영상 (아오모리공원)ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                            <span class="name">전영범</span>
+                            <span class="views">채널정보</span>
+                        </div>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+    </div>
+    <!-- videoForm -->
+
+</body>
+</html>

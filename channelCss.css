@@ -1,0 +1,218 @@
+:root{
+    /* Color */
+    --white-color: #fff;
+    --black-color: #140a00;
+    --blue-color: #045fd4;
+    --red-color: #ff0000;
+    --grey-dark-color: #909090;
+    --grey-light-color: #e0e0e0;
+
+    /* Size */
+    --side-padding: 12px;
+    --avatar-size: 50px;
+    --mini-avatar-size: 35px;
+        
+    /* Font Size */
+    
+    --font-head: 25px;
+    --font-large: 18px;
+    --font-medium: 14px;
+    --font-small: 12px;
+    --font-micro: 10px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
+button, button:focus{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: var(--side-padding);
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
+
+header .logo{
+    font-size: var(--font-head);
+    font-weight: bold;
+    margin-left: var(--side-padding);
+}
+header .logo title{
+    line-height: 160%;
+}
+
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: underline;}
+
+
+
+header .search{
+    font-size: var(--font-head);
+    margin: 0 30px;
+    width: 50%;
+}
+
+header .icons .searchicon .fa-search{
+    margin-right: var(--side-padding);
+}
+
+header .icons .searchicon, header .icons .addicon{
+    margin-right: var(--side-padding);
+    font-size: var(--font-head);
+}
+
+.leftside {
+    width: 240px;
+    float: left;
+}
+.leftside span{
+    font-size: var(--font-large);
+    margin: 30px;
+    height: 100%;
+}
+.leftside button{
+    height: 60px;
+    width: 240px;
+    padding: 10px;
+}
+.leftside button:hover{
+    background-color: var(--grey-light-color);
+}
+.leftside .upside{
+    border-bottom: 1px solid var(--grey-light-color);
+    padding-bottom: 30px;
+}
+.leftside .subscribers{
+    border-bottom: 1px solid var(--grey-light-color);
+    padding-top: 30px;
+}
+.leftside .subscribers .title{
+    font-weight: bold;
+}
+
+.leftside .subscribers img{
+    width: var(--mini-avatar-size);
+    height: var(--mini-avatar-size);
+    border-radius: 50%;
+}
+
+
+
+.genre{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--grey-light-color);
+    border-bottom: 1px solid var(--grey-light-color);
+    padding: 10px 0;
+}
+
+.genre .hashtags{
+    display: flex;
+    font-size: var(--font-large);
+    color: var(--blue-color);
+    margin-left: 10px;
+}
+
+.genre .hashtags .tag{
+    display: flex;
+    font-size: var(--font-large);
+    color: var(--black-color);
+    background-color: var(--grey-light-color);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 30%;
+}
+body > .video{
+    padding: var(--side-padding);
+}
+.video{
+    margin: var(--side-padding) 0;
+    
+    display: flex;
+    justify-content: space-between;
+    background-color: #045fd4;
+}
+.video .item{
+    /* flex: 1 1 25%; */
+    width: 350px;
+    max-width: 500px;
+    margin: var(--side-padding) 0;
+    padding: 30px;
+    float: left;
+    background-color: #aeb36e;
+}
+
+.video .item .img{
+    object-fit: cover;
+    background-color: #3f7e54;
+}
+.video .item .metadata .imgpic{
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    margin: 10px;
+    background-color: #868686;
+}
+.video .item .metadata img{
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    margin: 10px;
+    background-color: #868686;
+}
+.video .item .metadata{
+    display: flex;
+    justify-content: space-between;
+    background-color: #000000;
+}
+.video .item .info{
+    max-width: 400px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #d40404;
+    
+}
+
+.video .item .info{
+    max-width: 400px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #d4bf04;
+    
+}
+
+.video .item .metadata .title{
+    font-size: var(--font-medium);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    background-color: #04d4c3;
+}
+.video .item .info .name, .video .item .info .views{
+    font-size: var(--font-micro);
+    color: var(--grey-dark-color);
+    background-color: #d404c3;
+}

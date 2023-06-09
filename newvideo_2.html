@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video Upload</title>
+    <link rel="stylesheet" type="text/css" href="newVideoCss.css"/>
+
+<script>
+
+    function addVideo2(){
+        var settitle=document.getElementById('title').value;
+        var setname=document.getElementById('channelname').value;
+        var setview=document.getElementById('view').value;
+        var settime=document.getElementById('time').value;
+        var settag=document.getElementById('tag').value;
+        var setvideoInfo=document.getElementById('videoInfo').value;
+        var setlocation=document.getElementById('location').value;
+        var setthumbnail=document.getElementById('thumbnail').value;
+            opener.parent.addVideo(settitle, setname,setview,settime, settag, setvideoInfo, setlocation, setthumbnail);
+            window.close();
+        }
+
+        function getCmaFileView1(obj,stype) {
+            var s = getCmaFileInfo(obj,stype);
+            alert(s);
+
+            document.getElementById('location').value=("video/"+s+".mp4");
+        }
+        function getCmaFileView2(obj,stype) {
+            var s = getCmaFileInfo(obj,stype);
+            alert(s);
+
+            document.getElementById('thumbnail').value=("img/"+s+".png");
+        }
+
+        function getCmaFileInfo(obj,stype) {
+            var fileObj, pathHeader , pathMiddle, pathEnd, allFilename, fileName, extName;
+            if(obj == "[object HTMLInputElement]") {
+                fileObj = obj.value
+            } else {
+                fileObj = document.getElementById(obj).value;
+            }
+            if (fileObj != "") {
+                    pathHeader = fileObj.lastIndexOf("\\");
+                    pathMiddle = fileObj.lastIndexOf(".");
+                    fileName = fileObj.substring(pathHeader+1, pathMiddle);
+                    return fileName; // 순수 파일명만(확장자 제외)
+            
+            }
+        }
+</script>
+</head>
+
+<body>
+    <header>Video Upload</header>
+    <hr>
+    <div> <span>title : </span> <input type="text" id="title"></div>
+    <div>  <span>channelname : </span> <input type="text" id="channelname"></div>
+    <div> <span>view : </span> <input type="text" id="view"></div>
+    <div>  <span>time : </span> <input type="text" id="time"></div>
+    <div> <span>tag : </span> <input type="text" id="tag"></div>
+    <div>  <span>informateion : </span> <input type="text" id="videoInfo"></div>
+
+    <br>
+    <input type="file" onchange="getCmaFileView1(this,'name')">
+    <div>  <span>location : </span> <input type="text" id="location" readonly></div>
+    
+    <br>
+    <input type="file" onchange="getCmaFileView2(this,'name')">
+    <div>  <span>thumbnail : </span> <input type="text" id="thumbnail" readonly></div>
+    <br>
+    <div>  <input type="button" value="제출하기" id="submit" onclick="addVideo2();"></div>
+
+</body>
+</html>

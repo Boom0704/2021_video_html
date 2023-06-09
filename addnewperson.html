@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video Upload</title>
+    <link rel="stylesheet" type="text/css" href="newVideoCss.css"/>
+
+<script>
+
+    function addVideo3(){
+        var setname=document.getElementById('channelname').value;
+        var setlocation=document.getElementById('location').value;;
+            opener.parent.addChannel(setname, setlocation);
+            window.close();
+        }
+
+</script>
+</head>
+
+<body>
+    <header>Video Upload</header>
+    <hr>
+    <div> <span>channelnName : </span> <input type="text" id="channelname"></div>
+    <div>  <span>imgLocation : </span> <input type="text" id="location"></div>
+    <div>  <input type="button" value="제출하기" id="submit" onclick="addVideo3();"></div>
+
+</body>
+</html>

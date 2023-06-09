@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="channelCss.css"/>
+    <title>Youtube</title>
+    <script>
+        var videoList = new Array();
+        videoList.push(document.getElementById('v1'));
+        var videoCheck = document.getElementById('v1');
+        
+        
+        function setCompose(){
+            for(var i=0; i<videoList.length; i++){
+                if(videoCheck==videoList[i]){
+                    var thisVideo = videoList[i];
+                alert(i)
+                }
+            }
+            var thisTitle = document.getElementById(JSON.stringify(thisVideo)+"title");
+            var thisName = document.getElementById(JSON.stringify(thisVideo)+"name");
+            var thisViews = document.getElementById(JSON.stringify(thisVideo)+"views");
+            var thisTimes = document.getElementById(JSON.stringify(thisVideo)+"times");
+            var thisList = new Array();
+            thisList.push(thisTitle)
+            thisList.push(thisName)
+            thisList.push(thisViews)
+            thisList.push(thisTimes)
+                alert("test")
+            return thisList
+        }
+
+        function newwin(){
+            window.open("newvideo_1.html","","width=600px,height=400px,top=200px;");
+        }
+        function newwVideo(){
+            window.open("video_1.html","","width=2000px,height=2000px%,top=200px;");
+        }
+
+        function addVideo(settitle, setname, setview, settime){
+            var target = document.getElementById('videoObject');
+
+
+            var newItem =document.createElement('li')
+            newItem.setAttribute("class", "item");
+            newItem.onclick = function(){ newwVideo(); }
+            var newDivImg =document.createElement('div')
+            newDivImg.setAttribute("class", "img");
+            var newImgVideo =document.createElement('img')
+            newImgVideo.setAttribute("src", "img/영상2.png");
+            newDivImg.appendChild(newImgVideo);
+            newItem.appendChild(newDivImg);
+            var newDivMetadata =document.createElement('div')
+            newDivMetadata.setAttribute("class", "metadata");
+            var newImgChannel =document.createElement('img');
+            newImgChannel.setAttribute("src", "img/selfcamera.jpg");
+            var newDivInfo =document.createElement('div');
+            newDivInfo.setAttribute("class", "info");
+            //타이틀
+            var newSpanTitle =document.createElement('span');
+            newSpanTitle.setAttribute("class", "title");
+            var textTitle = document.createTextNode(settitle);
+            newSpanTitle.appendChild(textTitle);
+            //영상 이름
+            var newSpanName =document.createElement('span');
+            newSpanName.setAttribute("class", "name");
+            var textName = document.createTextNode(setname);
+            newSpanName.appendChild(textName);
+            var newDivViewAndTimes =document.createElement('div');
+            newDivViewAndTimes.setAttribute("class", "ViewsAndTimes");
+            var newSpanViews =document.createElement('span');
+            newSpanViews.setAttribute("class", "views");
+            var textViews = document.createTextNode(setview);
+            newSpanViews.appendChild(textViews);
+            var newSpanTimes =document.createElement('span');
+            newSpanTimes.setAttribute("class", "times");
+            var textTimes = document.createTextNode(settime);
+            newSpanTimes.appendChild(textTimes);
+            newDivViewAndTimes.appendChild(newSpanViews);
+            newDivViewAndTimes.appendChild(newSpanTimes);
+            newDivInfo.appendChild(newSpanTitle);
+            newDivInfo.appendChild(newSpanName);
+            newDivInfo.appendChild(newDivViewAndTimes);
+            newDivMetadata.appendChild(newImgChannel);
+            newDivMetadata.appendChild(newDivInfo);
+            newItem.appendChild(newDivMetadata);
+            target.appendChild(newItem);
+            }
+    </script>
+</head>
+<body>
+
+    <!-- 해더 -->
+    <header>
+        <div class="logo">
+            <img src="img/youtube.png" width="50" height="40" alt=""/>
+            <span class="title">Video Home</span>
+        </div>
+        <input class="search" type="text">
+        <div class="icons">
+            <button class="searchicon" onclick="newwin();"><img src="img/plus.png" width="50" height="40" alt=""/></button>
+            <button class="addicon" onclick=open_popup()> <i class="fas fa-ellipsis-v"></i></button>
+           
+            </div>
+    </header>
+    <!-- 해더 -->
+
+
+    <!-- 사이드바 -->
+    <aside class="leftside">
+        <div>
+            <ul class="upside">
+                <li class="home"><button><i class="fas fa-home"><span>1000</span></i></button></li>
+                <li class="subscribe"><button><i class="fas fa-compass"><span>1000</span></i></button></li>
+            </ul>
+        </div>
+        
+        <div>
+            <ul class="subscribers">
+                <span class="title">subscribe</span>
+                <li class="name">
+                    <button>
+                        <img src="img/selfcamera.jpg" alt=""/>
+                        <span>channel1</span>
+                    </button>
+                </li>
+                <li class="name">
+                    <button>
+                        <img src="img/selfcamera.jpg" alt=""/>
+                        <span>channel1</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- 사이드바 -->
+    
+    
+    <!-- channemlForm -->
+    <div class="channemlForm">
+        <section class="genre">
+            <ul class="hashtags">
+                <li class="tag">tag1</li>
+                <li class="tag">tag2</li>
+                <li class="tag">tag3</li>
+                
+            </ul>
+        </section>
+        
+        <section class="video">
+            <ul id="videoObject">
+                <li class="item" onclick="newwVideo()" id="v1">
+                    <div class="img"><img src="img/영상2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title" id="v1title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name" id="v1name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views" id="v1views">1000 Views</span>
+                                <span class="times" id="v1times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo()">
+                    <div class="img"><img src="img/영상2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo()">
+                    <div class="img"><img src="img/영상2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo()">
+                    <div class="img"><img src="img/영상2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo()">
+                    <div class="img"><img src="img/영상2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item" onclick="newwVideo()">
+                    <div class="img"><img src="img/영상2.png" alt=""></div>
+                    <div class="metadata">
+                        <img id="imgpic" src="img/selfcamera.jpg" alt=""/>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <div class="ViewsAndTimes">
+                                <span class="views">1000 Views</span>
+                                <span class="times">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <!-- channemlForm -->
+    
+
+</body>
+</html>

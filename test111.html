@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+
+        <script>
+
+            function openwin(){
+                window.open("test112.html","","width=1000px,height=1000px,top=200px;");
+            }
+
+            function openwin2(){
+                window.open("test112.html","","width=1000px,height=1000px,top=200px;");
+
+                
+            }
+            function setdata(){
+
+                var data1 = "데이타12"
+                alert("열림")
+                var songList = new Array();
+                songList.push(data1)
+                return songList
+            }
+            function settest(){
+
+            alert("settest")
+            }
+        </script>
+
+    </head>
+    <body>
+        <input type="button" value="사과" id="hel" onclick="openwin()">
+        
+        <input type="button" value="사과" id="hel" onclick="settest()">
+    </body>
+</html>

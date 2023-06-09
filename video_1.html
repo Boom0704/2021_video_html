@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewprot" content="width=device-width" initial-scale="1.0">
+    <link rel="stylesheet" type="text/css" href="videoCss.css"/>
+    <title>Youtube Video</title>
+
+    <script>
+        window.onload = function(){
+            var a =  document.getElementById('mianTitle')
+               a.innerHTML = "일단 바뀌라"
+                var getList = opener.parent.setCompose();
+                document.getElementById('mianTitle').value = getList[0];
+                document.getElementById('mianName').value = getList[1];
+                document.getElementById('mianViewsAndTimes').value = getList[2] + "  " + getList[3];
+                }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fab fa-youtube"></i>
+            <span class="title">Youtube</span>
+        </div>
+        <div class="icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </header>
+
+
+    <!-- videoForm -->
+    <div class="videoForm">
+        <section class="player">
+            <video controls src="video/video1.mp4"></video>
+        </section>
+    
+    
+    
+        <div class="infoAndUpNext">
+            <section class="info">
+    
+                <div class="metadata">
+                    <ul class="hashtags">
+                        <li class="tag" id="tag1">#tag1</li>
+                        <li class="tag" id="tag2">#tag2</li>
+                        <li class="tag" id="tag3">#tag3</li>
+                    </ul>
+                    <div class="titleAndButton">
+                        <span class="title" id="mianTitle"> 제목을 로드하는데 실패하였습니다.ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </div>
+                    <span class="views" id="mianViewsAndTimes">조회수를 로드하는데 실패하였습니다. </span>
+                </div>
+        
+                
+                <ul class="actions">
+                    <li><button><i class="fas fa-thumbs-up"><span>1000</span></i></button></li>
+                    <li><button><i class="fas fa-thumbs-down">1000<span></span></i></button></li>
+                    <li><button><i class="fas fa-share"><span>Share</span></i></button></li>
+                    <li><button><i class="fas fa-plus"><span>Save</span></i></button></li>
+                    <li><button><i class="fab fa-font-awesome-flag">Report<span></span></i></button></li>
+                </ul>
+        
+        
+                <div class="channel">
+                    <div class="noneinfo">
+                        <div class="metadata">
+                            <img src="img/selfcamera.jpg" alt=""/>
+                            <div class="info">
+                                <span class="name" id="mianName">이름 로드하는데 실패하였습니다.</span>
+                                <span class="subscribers">구독좌 수를 로드하는데 실패하였습니다.</span>
+                            </div>
+                        </div>
+                        <div class="subscribe">subscribe</div>
+                    </div>
+                    <div class="channelinfo">
+                        <div class="test">채널 설명을 로드하는데 실패하였습니다.</div>
+                    </div>
+                </div>
+        
+            </section>
+        
+        
+            <section class="upNext">
+                <span class="title">Up next</span>
+                <ul>
+                    <li class="item">
+                        <div class="img"><img src="img/영상2.png" alt=""></div>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <span class="views">채널정보</span>
+                        </div>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </li>
+                    <li class="item">
+                        <div class="img"><img src="img/영상3.png" alt=""></div>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <span class="views">채널정보</span>
+                        </div>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </li>
+                    <li class="item">
+                        <div class="img"><img src="img/영상4.png" alt=""></div>
+                        <div class="info">
+                            <span class="title">영상 2 (글자수가 길어야 하기 때문에 일단 테스트용으로 아무말이나 쓰기로 했다. 하지만 이 글자로도 부족한지 더 긴 내용을 요구하기에 아무말을 더 쓰기로 했다.)</span>
+                            <span class="name">전영범</span>
+                            <span class="views">채널정보</span>
+                        </div>
+                        <button class="moreBtn">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <!-- videoForm -->
+
+</body>
+</html>
